@@ -1,22 +1,21 @@
-package com.vladleesi;
+package com.vladleesi
 
-import io.grpc.Server;
-import io.grpc.ServerBuilder;
-
-import java.io.IOException;
+import io.grpc.ServerBuilder
+import java.io.IOException
 
 /**
  * Hello world!
  */
-public class App {
-    public static void main(String[] args) throws InterruptedException, IOException {
-        System.out.println("Hello World!");
-
-        Server server = ServerBuilder.forPort(8080)
-                .addService(new MainServiceImpl())
-                .build();
-
-        server.start();
-        server.awaitTermination();
+object App {
+    @Throws(InterruptedException::class, IOException::class)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        println("Server is starting..")
+        val server = ServerBuilder.forPort(8080)
+            .addService(MainServiceImpl())
+            .build()
+        server.start()
+        println("Server started")
+        server.awaitTermination()
     }
 }
